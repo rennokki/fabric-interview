@@ -19,7 +19,7 @@ class OmdbQueryTest extends TestCase
         Http::fake([
             'omdb.test/*' => Http::response([
                 'Search' => $movies = $this->generateMovies(),
-                'totalResults' => "3",
+                'totalResults' => '3',
                 'Response' => 'True',
             ]),
         ]);

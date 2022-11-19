@@ -15,7 +15,7 @@ class OmdbClientTest extends TestCase
         Http::fake([
             'omdb.test/*' => Http::response([
                 'Search' => $this->generateMovies(),
-                'totalResults' => "3",
+                'totalResults' => '3',
                 'Response' => 'True',
             ]),
         ]);
