@@ -38,7 +38,6 @@ jobs:
 
       - name: Install dependencies
         run: |
-          composer config --global --auth http-basic.renoki-co.repo.repman.io token ${{ secrets.REPMAN_TOKEN }}
           composer install --no-interaction --no-progress --prefer-dist --optimize-autoloader
 
       - name: Test
