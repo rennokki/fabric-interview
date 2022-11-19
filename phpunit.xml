@@ -27,5 +27,7 @@
         <env name="QUEUE_CONNECTION" value="sync"/>
         <env name="SESSION_DRIVER" value="array"/>
         <env name="TELESCOPE_ENABLED" value="false"/>
+        <env name="OMDB_API_KEY" value="test"/>
+        <env name="OMDB_API_URL" value="https://omdb.test"/>
     </php>
 </phpunit>
