@@ -27,14 +27,21 @@ jobs:
           coverage: pcov
 
       - uses: actions/cache@v3.0.4
-        name: Cache dependencies
+        name: Cache Composer dependencies
         with:
           path: ~/.composer/cache/files
-          key: composer-${{ hashFiles('composer.json') }}
+          key: composer-${{ hashFiles('composer.lock') }}
+
+      - uses: actions/cache@v3.0.4
+        name: Cache NPM dependencies
+        with:
+          path: node_modules
+          key: node-modules-${{ hashFiles('package-lock.json') }}
 
       - name: Install dependencies
         run: |
           composer install --no-interaction --no-progress --prefer-dist --optimize-autoloader
+          npm ci
 
       - name: Prepare project
         run: |
@@ -42,6 +49,8 @@ jobs:
           cp .env.example .env
           php artisan key:generate
           php artisan storage:link
+          npm ci
+          npm run build
 
       - name: Run tests
         run: |

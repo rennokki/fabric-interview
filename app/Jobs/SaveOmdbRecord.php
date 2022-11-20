@@ -45,7 +45,9 @@ class SaveOmdbRecord implements ShouldQueue
                 'type' => $this->result['Type'],
             ]),
             callback: function (OmdbRecord $record) {
-                if ($posterUrl = $this->result['Poster']) {
+                $posterUrl = $this->result['Poster'] ?? null;
+
+                if ($posterUrl && $posterUrl !== 'N/A') {
                     $record->posters()->create([
                         'url' => $posterUrl,
                     ]);
