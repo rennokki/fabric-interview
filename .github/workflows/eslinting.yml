@@ -40,4 +40,4 @@ jobs:
 
       - name: Test against Eslint
         run: |
-          vendor/bin/pint --test
+          npm run lint
